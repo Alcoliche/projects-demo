@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style>
+        /*reset*/
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        /*大局*/
+
+        nav {
+            width: 500px;
+            margin: 20px auto 0;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        nav::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        nav>ul>li {
+            float: left;
+            position: relative;
+        }
+
+        nav>ul>li:hover .child {
+            display: block;
+        }
+
+        nav .child {
+            position: absolute;
+            top: 100%;
+            display: none;
+        }
+
+        nav a {
+            padding: 10px;
+            display: block;
+        }
+
+        /*细节*/
+
+        nav a:hover {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Index</a>
+            </li>
+            <li>
+                <a href="#">Work</a>
+            </li>
+            <li>
+                <a href="#">More</a>
+                <ul class="child">
+                    <li>
+                        <a href="#">Github</a>
+                    </li>
+                    <li>
+                        <a href="#">Wechat</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>
