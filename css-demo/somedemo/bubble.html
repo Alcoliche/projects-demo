@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    .bubble {
+      position:  relative;
+      border: 1px solid #ccc;
+      min-height: 50px;
+      min-width: 100px;
+      display: inline-block;
+      background: white;
+      padding: 10px;
+    }
+    .bubble:before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border: 1px solid #ccc;
+      background: #ccc;
+      display: inline-block;
+      transform: rotateZ(45deg);
+      top: -6px;
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="bubble"></div>
+</body>
+</html>
