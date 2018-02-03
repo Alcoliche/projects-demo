@@ -4,7 +4,11 @@
   <meta charset="utf-8">
   <title>JS Bin</title>
   <style>
-    .bubble {
+    li {
+      list-style: none;
+      margin-top: 30px;
+    }
+    .bubble,.bubble1,.bubble2 {
       position:  relative;
       border: 1px solid #ccc;
       min-height: 50px;
@@ -16,18 +20,56 @@
     .bubble:before {
       content: "";
       position: absolute;
-      width: 10px;
-      height: 10px;
-      border: 1px solid #ccc;
-      background: #ccc;
+      width: 20px;
+      height: 20px;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      background: white;
       display: inline-block;
       transform: rotateZ(45deg);
-      top: -6px;
+      top: -12px;
       
     }
+    .bubble1:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 20px solid white;
+      border-top: 20px solid red;
+      position: absolute;
+      top: 0;
+      right: 0;   
+     
+    }
+    .bubble2:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 20px solid white;
+      border-top: 20px solid #ccc;
+  
+      position: absolute;
+      transform: rotateZ(-45deg);
+      top:-10px;
+        
+    }
+    
   </style>
 </head>
 <body>
-  <div class="bubble"></div>
+  <div class="layout">
+    <ul>
+      <li><div class="bubble"></div></li>
+      <li>
+        <div class="bubble1">
+      </li>
+      <li>
+        <div class="bubble2">
+      </li>
+    </ul>
+  </div>
+  
+    
+  </div>
 </body>
 </html>
