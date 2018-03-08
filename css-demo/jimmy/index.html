@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jimmy</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_568739_z3k3puebhli60f6r.css">
+    <style>
+        /*-common css*/
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .button {
+            display: inline-block;
+            font-size: 18px;
+            color: blueviolet;
+            background-color: aqua;
+            padding: 10px 20px;
+            border-radius: 4px;
+            opacity: .6;
+        }
+
+        .button {
+            opacity: 1;
+        }
+
+        .layout {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        body {
+            font: 14px/'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+        
+        p,dd {
+         color: #777;
+        }
+        /**/
+        
+        header {
+            position: relative;
+            height: 100%;
+            min-height: 800px;
+            background: yellow url(img/footer.jpg) center center no-repeat;
+            background-size: cover;
+        }
+
+        /* header::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0,255, 1);
+    } */
+
+        header .nav-logo {
+            font-size: 50px;
+            color: yellow;
+            float: left;
+            margin-top: 10px;
+        }
+
+        header .navbar {
+            float: right;
+        }
+
+        header .navbar>li {
+            float: left;
+            margin: 10px;
+        }
+
+        header .navbar a {
+            display: inline-block;
+            color: rgba(1, 6, 10, 0.719);
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        header .navbar a:hover {
+            background: rgb(192, 224, 9);
+        }
+
+        .header-intro {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            text-align: center;
+        }
+
+        .header-intro h1 {
+            font-size: 32px;
+        }
+
+        .header-intro h2 {
+            font-size: 50px;
+            margin-top: 20px;
+        }
+
+        .header-intro .button {
+            margin-top: 20px;
+        }
+
+        section {
+            margin-top: 120px;
+            text-align: center;
+        }
+        
+        .bg-gray {
+            background-color: #f7f7f7;
+        }
+        section>h3 {
+            font-size: 40px;
+        }
+
+        section>p {
+            margin-top: 10px;
+        }
+
+        section>ul .iconfont {
+            font-size: 20px;
+            padding-right: 5px;
+        }
+
+        .family>ul>li {
+            float: left;
+            width: 33.33%;
+            padding: 10px 20px;
+        }
+
+        section>ul p {
+            margin-top: 10px;
+        }
+
+        section .family figure {
+            width: calc(33.33% - 20px);
+            height: 250px;
+            margin: 10px;
+            float: left;
+        }
+
+        section .family a {
+            display: block;
+            height: 220px;
+        }
+
+        section .family img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .timeline>li {
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .timeline .end,
+        .img-shape img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid gold;
+        }
+
+        .timeline .end {
+            padding-top: 40px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .timeline>li::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .timeline>li:nth-child(odd) {
+            padding-right: calc(50% - 100px);
+            text-align: right;
+        }
+
+        .timeline>li:nth-child(odd) dl {
+            margin-right: 120px;
+        }
+
+        .timeline>li:nth-child(odd) img {
+            float: right;
+        }
+
+        .timeline>li:nth-child(even) {
+            padding-left: calc(50% - 100px);
+            text-align: left;
+        }
+
+        .timeline>li:nth-child(even) dl {
+            margin-left: 120px;
+        }
+
+        .timeline>li:nth-child(even) img {
+            float: left;
+        }
+
+        .timeline dt {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .timeline dd:nth-of-type(1) {
+            color: blueviolet;
+        }
+
+        .timeline>li:before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            display: inline-block;
+            height: 64px;
+            width: 2px;
+            background-color: gold;
+        }
+
+        .timeline>li:last-child::before {
+            height: 0;
+        }
+
+        section .team li {
+            float: left;
+            width: 33.33%;
+            padding: 10px 20px;
+        }
+
+        section .team .iconfont {
+            border-radius: 50%;
+        }
+
+        .contact-left {
+            float: left;
+        }
+
+        .contact-right {
+            float: right;
+        }
+
+        .contact-left input {
+            display: block;
+            border-radius: 5px;
+            height: 60px;
+            width: 600px;
+        }
+        .footer-left {
+            float: left;
+        }
+        .footer-center {
+            text-align: center;
+        }
+        .footer-center li {
+            display: inline-block;
+        }
+        .footer-right {
+            float:right;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="clearfix layout">
+            <a href="#" class="nav-logo">
+                MARVEL
+            </a>
+            <ul class="navbar">
+                <li>
+                    <a href="#">LASTEST NEWS</a>
+                </li>
+                <li>
+                    <a href="#">COMICS</a>
+                </li>
+                <li>
+                    <a href="#">MOVIES</a>
+                </li>
+                <li>
+                    <a href="#">GAMES</a>
+                </li>
+                <li>
+                    <a href="#">TV</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-intro layout">
+            <h1>Welcome To Our Studio!</h1>
+            <h2>It`S NICE TO MEET
+                <br>YOU</h2>
+            <a href="#" class="button">KNOW MORE</a>
+        </div>
+    </header>
+    <main class="layout">
+        <section class="clearfix bg-gray">
+            <h3>TOP MARVEL HEROES</h3>
+            <p>TOP MARVEL HEROES</p>
+            <div class="family">
+                <figure>
+                    <a href="#">
+                        <img src="img/Spider-Man.jpg" alt="">
+                    </a>
+                    <figcaption>Spider-Man</figcaption>
+                    <p>Peter Benjamin Parker</p>
+                </figure>
+                <figure>
+                    <a href="#">
+                        <img src="img/Iron Man.jpg" alt="">
+                    </a>
+                    <figcaption>Iron Man</figcaption>
+                    <p>Anthony Edward "Tony" Stark</p>
+                </figure>
+                <figure>
+                    <a href="#">
+                        <img src="img/Hulk.jpg" alt="">
+                    </a>
+                    <figcaption>Hulk</figcaption>
+                    <p> Robert Bruce Banner</p>
+                </figure>
+                <figure>
+                    <a href="#">
+                        <img src="img/Thor.jpg" alt="">
+                    </a>
+                    <figcaption>thor</figcaption>
+                    <p>Thor Odinson
+                    </p>
+                </figure>
+                <figure>
+                    <a href="#">
+                        <img src="img/Captain America.jpg" alt="">
+                    </a>
+                    <figcaption>CAPTAIN AMERICA</figcaption>
+                    <p>Steven "Steve" Rogers</p>
+                </figure>
+                <figure>
+                    <a href="#">
+                        <img src="img/Captain Marvel.jpg" alt="">
+                    </a>
+                    <figcaption>Captain Marvel</figcaption>
+                    <p>Carol Danvers</p>
+                </figure>
+            </div>
+        </section>
+
+        <section class="family clearfix">
+            <h3>TITANIC TEAMS</h3>
+            <p>TITANIC TEAMS</p>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="img/Spider-Man.jpg" alt="">
+                    </a>
+                    <h3>Avengers</h3>
+                    <p>Earth's Mightiest Heroes joined forces to take on threats that were too big for any one hero to tackle.
+                        With a roster that has included Captain America, Iron Man, Ant-Man, Hulk, Thor, Wasp and dozens more
+                        over the years, the Avengers have come to be regarded as Earth's No. 1 team.</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="img/Spider-Man.jpg" alt="">
+                    </a>
+                    <h3>X-MEN</h3>
+                    <p>Feared and hated by humans because they're different, the X-Men are heroic mutants, individuals born
+                        with special powers who've sworn to use their gifts to protect mutants as well as humans.</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="img/Spider-Man.jpg" alt="">
+                    </a>
+                    <h3>FANTASTIC FOUR</h3>
+                    <p>After being exposed to cosmic rays, Reed Richards, Susan Storm, Ben Grimm and Johnny Storm found they
+                        had amazing new powers. Reed Richards found he has the ability to stretch his body in any way he
+                        wanted, while Susan Storm can turn herself, objects and other people invisible. </p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="bg-gray">
+            <h3>BOSS</h3>
+            <p>BRING ON THE BAD GUYS</p>
+            <ul class="timeline img-shape">
+                <li>
+                    <img src="http://ww1.sinaimg.cn/large/8afe7f49gy1fobgw9wq0fj203w03wmx2.jpg" alt="">
+                    <dl>
+                        <dt>Thanos</dt>
+                        <dd>Powers </dd>
+                        <dd>Thanos possesses the superhuman physiology of all Eternals, granting him superhuman strength,endurance,reflexes,
+                            and agility. His skin in nearly invulnerable, particulary against heat, cold, electricity, radiation,
+                            toxins, aging, and disease, and he can survive indefinitely without food or water even before
+                            his "curse" from Death left him immortal, unable to die.</dd>
+                    </dl>
+                </li>
+                <li>
+                    <img src="http://ww1.sinaimg.cn/large/8afe7f49gy1fobgw9wq0fj203w03wmx2.jpg" alt="">
+                    <dl>
+                        <dt>Ronan</dt>
+                        <dd>Powers</dd>
+                        <dd>Born a Kree on the planet Hala,Ronan joined the Accuser Corps and quickly ascended to the top of
+                            the ranks. As The Supreme Accuser, Ronan enforces the laws of the Kree Empire throughout the
+                            galaxy and frequently clashes with Earthâ€™s superheroes and other alien races.</dd>
+                    </dl>
+                </li>
+                <li>
+                    <img src="http://ww1.sinaimg.cn/large/8afe7f49gy1fobgw9wq0fj203w03wmx2.jpg" alt="">
+                    <dl>
+                        <dt>Black Cat</dt>
+                        <dd>Powers</dd>
+                        <dd>Though it has been suggested that she had a latent mutant ability to affect probability fields around
+                            her ("jinxing"), the Black Cat's original "bad luck" powers were nothing more than meticulously
+                            planned stunts, executed with the aid of her</dd>
+                    </dl>
+                </li>
+                <li>
+                    <img src="http://ww1.sinaimg.cn/large/8afe7f49gy1fobgw9wq0fj203w03wmx2.jpg" alt="">
+                    <dl>
+                        <dt>Loki</dt>
+                        <dd>Powers</dd>
+                        <dd>Loki possesses physical abilities far superior to humans, an increased lifespan, superhuman strength
+                            (able to lift up to 50 tons), immune to terrestrial diseases, and resistant to conventional injury.Loki
+                            is perhaps the most powerful sorcerer in all of Asgard. His many magical abilities included shape-shifting
+                            (able to gain the basic natural abilities inherent in each form), astral projection, molecular
+                            rearrangement, eldritch energy blasts, illusion casting, flight (via levitation), telepathy,
+                            hypnosis, and teleportation.</dd>
+                    </dl>
+                </li>
+                <li>
+                    <span class="end">KNOW MORE</span>
+                </li>
+
+            </ul>
+        </section>
+        <section>
+            <h3>our teams</h3>
+            <p>the great wall</p>
+            <ul class="team img-shape clearfix">
+                <li>
+                    <img src="http://ww1.sinaimg.cn/large/8afe7f49gy1fobgw9wq0fj203w03wmx2.jpg" alt="">
+                    <h3>headplus</h3>
+                    <p>啦啦啦</p>
+                    <a href="">
+                        <span class="iconfont icon-contact1"> </span>
+                    </a>
+                    <a href="">
+                        <span class="iconfont icon-contact2"> </span>
+                    </a>
+                    <a href="">
+                        <span class="iconfont icon-contact3"> </span>
+                    </a>
+                </li>
+                <li>
+                    <img src="http://ww1.sinaimg.cn/large/8afe7f49gy1fobgw9wq0fj203w03wmx2.jpg" alt="">
+                    <h3>几米</h3>
+                    <p>来着潮州</p>
+                    <a href="">
+                        <span class="iconfont icon-contact1"> </span>
+                    </a>
+                    <a href="">
+                        <span class="iconfont icon-contact2"> </span>
+                    </a>
+                    <a href="">
+                        <span class="iconfont icon-contact3"> </span>
+                    </a>
+                </li>
+                <li>
+                    <img src="http://ww1.sinaimg.cn/large/8afe7f49gy1fobgw9wq0fj203w03wmx2.jpg" alt="">
+                    <h3>benjiaminwu</h3>
+                    <p>来着返老还童</p>
+                    <a href="">
+                        <span class="iconfont icon-contact1"> </span>
+                    </a>
+                    <a href="">
+                        <span class="iconfont icon-contact2"> </span>
+                    </a>
+                    <a href="">
+                        <span class="iconfont icon-contact3"> </span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section class="contact">
+            <h3>联系我们</h3>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <form action="/#" method="post">
+                <div class="message clearfix">
+                    <div class="contact-left">
+                        <input type="text" id="username" name="username" placeholder="你的名字">
+                        <br>
+                        <input type="text" id="useremail" name="useremail" placeholder="你的邮箱">
+                        <br>
+                        <input type="text" id="userphone" name="userphone" placeholder="你的电话">
+                        <br>
+                    </div>
+                    <textarea name="textarea" id="" cols="80" rows="15" placeholder="留下你的想法"></textarea>
+                </div>
+                <a href="#" class="button">提交信息</a>
+            </form>
+        </section>
+    </main>
+    <footer class="layout">
+        <span class="footer-left">Copyright © 2018</span>
+        <ul class="footer-center">
+            <li>
+                <a href="#">
+                    <span class="iconfont icon-contact1"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="iconfont icon-contact2"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="iconfont icon-contact3"></span>
+                </a>
+            </li>
+        </ul>
+        <ul class="footer-right">
+            <li>
+                <a href="">隐私政策</a>
+            
+            <li>
+                <a href="">使用条款</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
