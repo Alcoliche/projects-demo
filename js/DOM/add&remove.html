@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style>
+        .box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.56);
+        }
+
+        .active {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>hello</h1>
+        <p>world</p>
+    </div>
+    <button id="add">add</button>
+    <button id="remove">remove</button>
+    <button id="toggle1">toggle1</button>
+    <button id="toggle2">toggle2</button>
+    <script>
+        function $(selector) {
+            return document.querySelector(selector);
+        }
+
+        var boxPanel = document.querySelector('.box')
+        $('#add').onclick = function () {
+            boxPanel.classList.add('active')
+        }
+        $('#remove').onclick = function () {
+            boxPanel.classList.remove('active')
+        }
+        $('#toggle1').onclick = function () {
+            if (boxPanel.classList.contains('active')) {
+                boxPanel.classList.remove('active')
+            } else {
+                boxPanel.classList.add('active')
+            }
+        }
+        $('#toggle2').onclick = function () {
+            boxPanel.classList.toggle('active')
+        }
+
+
+    </script>
+</body>
+
+</html>
