@@ -24,7 +24,7 @@
                 newimg.src = e.target.getAttribute('date=img');
                 preview.appendChild(newimg);
             }
-        });
+        })
         list.removeEventListener('mouseout',function(e){
             preview.removeChild(newimg);
         });

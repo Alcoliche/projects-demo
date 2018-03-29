@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <!-- 补全代码，要求：
+        
+        当点击按钮开头添加时在<li>这里是</li>元素前添加一个新元素，内容为用户输入的非空字符串；当点击结尾添加时在最后一个 li 元素后添加用户输入的非空字符串.
+        当点击每一个元素li时控制台展示该元素的文本内容。 -->
+        <ul class="ct">
+            <li>这里是</li>
+            <li>饥人谷</li>
+            <li>任务班</li>
+        </ul>
+        <input class="ipt-add-content" placeholder="添加内容" />
+        <button id="btn-add-start">开头添加</button>
+        <button id="btn-add-end">结尾添加</button>
+
+        <script>
+            //todo ...
+            var start = document.querySelector("#btn-add-start");
+            var content = document.querySelector(".ipt-add-content");
+            var end = document.querySelector("#btn-add-end");
+            var list = document.querySelector(".ct");
+
+            start.addEventListener(function (e) {
+                if (content.value !== "") {
+                    console.log(content.value);
+                    var newli = document.createElement;
+                    newli.innerText = content.value;
+                    list.insertBefore(newli, list.firstChild);
+                    var newli =document.createElement;
+                }
+            });
+
+            end.addEventListener(function (e) {
+                if (content.value !== "") {
+                    var newli = document.createElement;
+                    newli.innerText = content.value;
+                    list.appendchild(newli);
+                }
+            });
+            list.addEventListener("click", function (e) {
+                console.log(e.target.innerText);
+            });
+            list.addEventListener("click", function (e) {
+                console.log(e.target.innerText);
+            });
+        </script>
+    </body>
+
+</html>
