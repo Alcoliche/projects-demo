@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // var xhr = new XMLHttpRequest()
+    // xhr.open('get','http://www.baidu.com',true)
+    // xhr.onreadyStatechange = function(){
+    //     if(xhr.readyState === 4){
+    //         if((xhr.status >= 200 && xhr < 300) || xhr.status == 304){
+    //             console.log(xhr.responseText)
+    //         }else{
+    //             console.log('server error')
+    //         }
+    //     }
+    // }
+    // xhr.onerror = function(){
+    //     console.log('server error')
+    // }
+    // xhr.send()
+
+    /******* post *******/
+    var xhr = new XMLHttpRequest()
+    xhr.timeout = 3000 //设置xhr请求超时时间
+    xhr.open('test.html',true)
+    xhr.onload = function(e) {
+        if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+            console.log(this.responseText)
+        }
+    }
+
+    xhr.ontimeout = function(e){
+        console.log('请求超时')
+    }
+    xhr.onerror = function(e){
+        console.log('连接失败')
+    }
+    xhr.send('username = headplus&password=666')
+</script>
+</body>
+</html>

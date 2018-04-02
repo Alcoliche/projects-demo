@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+<img src="http://js.jirengu.com/images/dave.min.svg" alt="">
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+      console.log('DOMContentLoaded')
+    })
+    function $(selector){
+      return document.querySelector(selector)
+    }
+    console.log($('img').width);
+    $('img').onload =function(){
+      console.log(this.width)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        function ajax(obj){
+            var url = obj.url
+            var type = obj.type || 'get'
+            var dataType = obj.dataType || 'json'
+            var onsuccess = obj.onsuccess || function(){}
+            var data = obj.data || {}
+            
+            //数据转换
+            var dataStr = []
+            for(var key in data){
+                dataStr.push(key + '=' + data[key])
+            }
+            dataStr = dataStr.join('&')
+            
+            //get 拼接URL
+            if(type === 'get'){
+                url += '?' + dataStr
+            }
+
+            var xhr = new XMLHttpRequest()
+            xhr.open(type, url, true)
+            xhr.onload = function(){
+                if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+                    if(dataType === 'json'){
+                        onsuccess(json.parse(xhr.responseText))
+                    }else{
+                        onsuccess(xhr.responseText)
+                    }
+                } else {
+                    onerror()
+                }
+            }
+            xhr.onerror = onerror
+            if(type === 'post'){
+                xhr.send(dataStr)
+            }else{
+                xhr.send()
+            }
+        }
+        //调用ajax() 例子
+        ajax({
+            url: 'http://www.xxx.com',
+            data: {
+                city: '东京',
+                weather: rain
+            },
+            onsuccess: function(ret){
+                console.log(ret)
+            },
+            onerror: function(){
+                console.log('服务器异常')
+            }
+
+        })
+    </script>
+</html>
