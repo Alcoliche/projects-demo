@@ -1,7 +1,6 @@
-alert(' I am  b.js')
 var xhr = new XMLHttpRequest()
-xhr.open('get','/getWeather',true)
+xhr.open('GET', '/getWeather?city=hangzhou', true)
 xhr.send()
 xhr.onload = function(){
-    console.log(JSON.parse(xhr.responseText))x
+  console.log(JSON.parse(xhr.responseText))
 }
