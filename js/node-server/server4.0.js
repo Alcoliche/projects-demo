@@ -3,7 +3,7 @@ var path = require('path')
 var fs = require('fs')
 var url = require('url')
 
-var routes = {
+var routes = {//路由分配
     '/a': function(req, res){
         res.end(JSON.stringify(req.query))
     },

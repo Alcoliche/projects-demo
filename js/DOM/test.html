@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+  <style>
+    .color{
+      background: #ffd351;
+      color: red;
+    }
+  </style>
+<body>
+  <!-- HTML结构 -->
+<ul id="test-css">
+    <li class="lang dy"><span>JavaScript</span></li>
+    <li class="lang "><span>Java</span></li>
+    <li class="lang dy"><span>Python</span></li>
+    <li class="lang "><span>Swift</span></li>
+    <li class="lang dy"><span>Scheme</span></li>
+    <button>dianwo</button>
+</ul>
+
+  <script>
+     function $(selector1){
+        return document.querySelector(selector1);
+    }     
+	 function $$(selector1){
+        return document.querySelectorAll(selector1);
+    }
+	var a = $("button")	;
+    var b = $$("#test-css .dy span");
+	console.log(a)
+    console.log(b)
+    $("button").onclick =function(){
+      $$("#test-css .dy span").classList.add("color");
+    
+    }
+	
+   
+    
+  </script>
+</body>
+</html>

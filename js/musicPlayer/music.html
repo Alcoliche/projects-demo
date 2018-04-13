@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    ul{
+        list-style-type: none;
+    }
+    .clearfix {
+        content:"";
+        display: block;
+        clear: both;
+    }
+    .cover{
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background:url() center center no-repeat;
+        background-size:cover;
+        filter: blur(5px);
+    }
+    .musicbox {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%,50%);
+        font-family: cursive;
+        font-size: 16px;
+        color: #f06d6a;
+        width: 340px;
+    }
+    .music-panel {
+        border:  1px solid rgba(155, 151, 151, 0.5);
+        padding: 20px 20px 5px 20px;
+        box-shadow:  0px 2px 5px 0px rgba(49, 48, 48, 0.1),0px 2px 10px 0px rgb(68, 67, 68);
+        background-color: rgba(255,255,255,0.9);
+    }
+    .music .control {
+        margin-top: 10px;
+        font-size: 22px;
+        color: #808080;
+        float: left;
+    }
+    .music .control .iconfont {
+        color: #f06d6a;
+        margin-right: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        
+    }
+    .music .control .iconfont:hover {
+        opacity: 0.3;
+    }
+    .musicbox .info {
+        margin-left: 120px;
+    }
+
+    .musicbox .info .title {
+        font-size: 18px;
+    }
+    .musicbox .info .author {
+        font-size: 13px;
+    }
+    /* 进度条 */
+    .musicbox .progress {
+        width: 260px;      
+    }
+    .musicbox .progress .bar {
+        margin-top: 5px;
+        height: 3px;
+        background: rgb(39, 38, 38, 0.2);
+        cursor: pointer;
+    }
+    .musicbox .progress .progress-now{
+        background: rgb(243, 98, 154);
+        height: 3px;
+        width: 0px;
+        position: relative;
+    }
+    .musicbox .time {
+        text-align: right;
+    }
+    /* 列表 */
+    </style>
+</head>
+<body>
+    <div class="cover"></div>
+    <div class="musicbox">
+        <div class="music-panel">
+            <div class="music clearfix">
+                <div class="control">
+                    <i class="back iconfont icon-back"></i>
+                    <i class="play iconfont icon-play"></i>
+                    <i class="next iconfont icon-next"></i>
+                </div>
+                <div class="info">
+                    <div class="title">the song</div>
+                    <div class="author">jimmy</div>
+                </div>
+            </div>
+            <div class="progress">
+                <div class="bar">
+                    <div class="progress-total"></div>
+                    <div class="progress-now"></div>
+                </div>
+                <div class="time">0:00</div>
+            </div>
+        </div>
+    </div>
+    <ul class="list">
+
+    </ul>
+</body>
+<script>
+    var musicList = []
+    var clock
+    var currentIndex = 0
+    var audio = new Audio()
+    audio.autoplay = true//自动播放
+    function $(selector){
+        return document.querySelector(selector)
+    }
+    function $$(selector){
+        return document.querySelectorAll(selector)
+    }
+    getMusicList(function(list){
+        console.log(list)
+        musicList = list
+        loadMusic(list[currentIndex])
+    })
+    function loadMusic(musicObj){
+        console.log(musicObj)
+        $('.musicbox .title').innerText = musicObj.tittle
+        $('.musicobx .author').innerText = musicObj.author
+        $('.cover').style.backgroundImage = 'url(' + musicObj.img + ')'
+        audio.src = musicObj.src
+    }
+
+    audio.ontimeupdate = function(){//进度条监听
+        $(".musicbox .progress-now").style.width = (this.currentTime/this.duration)*100 + '%'
+    }
+    $('.musicbox .bar').onclick =function(e){//进度条拖动
+        console.log(e)
+        var percent = e.offsetX/parseInt(getComputedStyle(this).width)
+        audio.currentTime =audio.duration * percent 
+    }
+    audio.onplay = function(){//时间显示
+        clock = setInterval(function(){
+            var min = Math.floor(this.currentTime/60)
+            var sec = Math.floor(this.currentTime)%60 + ''
+            sec = sec > 10 ? sec : '0' + sec
+            $('.musicbox .time').innerText = min +":" + sec
+        },1000)
+    }
+    audio.onpause = function(){//暂停
+        clearInterval(clock)
+    }
+    audio.onended = function(){//歌曲结束
+        currentIndex = (++currentIndex) % musicList.length
+        loadMusic(musicList[currentIndex])
+    }
+    $(".musicbox .play").onclick = function(){//暂停播放
+        if(audio.paused){
+            audio.play()
+            this.querySelector(".iconfont").classList.remove("icon-stop")
+            this.querySelector(".iconfont").classList.add("icon-play")
+        }else{
+            audio.pause()
+            this.querySelector('.fa').classList.add('fa-pause')
+            this.querySelector('.fa').classList.remove('fa-play')
+        }   
+    }
+    $('.musicbox .next').onclick = function(){
+        currentIndex = (++currentIndex) % musicList.length
+        loadMusic(musicList[currentIndex])
+    }
+    $('.musicbox .back').onclick = function(){
+        currentIndex = (musiclist.length + (--currentIndex)) % musicList.length
+        loadMusic(musicList[currentIndex])
+    }
+
+    //ajax获取音乐数据
+    function getMusicList(callback){
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET','music.json',true)
+        xhr.onload = function(){
+            if((xhr.status >=200 && xhr.status < 300) || xhr.status === 304){
+            callback(JSON.parse(this.responseText))
+                }else {
+                console.log('获取数据失败')
+                }
+           
+        }
+        xhr.onerror = function(){
+            console.log('网络异常')
+        }
+        xhr.send()
+    }
+
+</script>
+</html>

@@ -35,6 +35,7 @@ console.log(path.join(__dirname, 'sample'))
 
 var server = http.createServer(function(req, res){
     staicRoot(path.join(__dirname, 'sample'), req, res)
+    //__dirname 当前路径
 })
 
 server.listen(8080)
