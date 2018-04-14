@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  li{
+    list-style: none;
+  }
+  .tab {
+    margin-top: 30px;
+  }
+  .tab-list {
+    font-size: 0;
+  }
+  .tab-list > li {
+    font-size: 16px;
+    background: #ddd;
+    display: inline-block;
+    padding:5px 20px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;  
+    cursor: pointer;
+  }
+  .content {
+    border:1px solid #ccc;
+    height: 200px;
+    width: 300px;
+    background: #fff;
+  }
+  .content li {
+    display: none;
+  }
+  .tab-list li.active {
+    background: #fff;
+  }
+  .content li.active {
+    display: block;
+    padding: 20px 40px;
+    font-size:32px;
+  }
+  </style>
+<body>
+  <div class="tab">
+    <ul class = "tab-list">
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+    <ul class="content">
+      <li class="child active">child1</li>
+      <li class="child">child2</li>
+      <li class="child">child3</li>
+      <li class="child">child4</li>
+    </ul>
+  </div>
+  <div class="tab">
+    <ul class = "tab-list">
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+    <ul class="content">
+      <li class="child active">child1</li>
+      <li class="child">child2</li>
+      <li class="child">child3</li>
+      <li class="child">child4</li>
+    </ul>
+  </div>
+</body>
+  <script>
+    
+   $(".tab-list > li").on('click',function(){
+     //console.log(this)
+     //console.log($(this))
+     console.log($(this).index())
+     $(this).addClass('active').siblings().removeClass("active")
+     $(this).parents('.tab').find('.child').eq($(this).index())
+     .addClass('active').siblings().removeClass("active")
+     
+})
+  </script>
+</html>
