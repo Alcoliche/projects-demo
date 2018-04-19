@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: .88rem;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        main {
+            flex-grow: 1;
+            overflow: auto;
+        }
+
+        footer>ul {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+        }
+
+        footer>ul>li {
+            background: #dddd;
+            width: 20%;
+            height: 100%;
+            margin: 0 20px;
+        }
+        .layout {
+            width: 96%;
+            margin: 0 auto;
+        }
+        /**/
+        .home-modal .hotel-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 2.81rem;
+            background-color: rgba(0, 0, 0, 1);
+            color: rgba(255, 255, 255, 1);
+            font-size: 1.13rem;
+            font-family: Microsoft Yahei;        
+        }
+        .content {
+            
+        }
+        .content .bg{
+            width: 100%;
+            height: 11.56rem;
+        }
+        .content .bg img {
+            width: 100%;
+            height: 100%;
+        }
+        .hotel-env {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 2.75rem;
+            margin: auto;
+            margin-top: 0.5rem;
+            line-height: 1.25rem;
+            border: 0.06rem solid rgba(187, 187, 187, 1);
+        }
+        .content .hotel-env i {
+            margin-right: 1rem;
+        }
+        .hotel-opt {
+            display: flex;
+            align-items: center;
+            justify-content: center;  
+            width: 100%;
+            height: 3.13rem;
+            margin: auto;
+            margin-top: 0.5rem;
+            line-height: 1.25rem;
+            border: 0.06rem solid rgba(187, 187, 187, 1); 
+        }
+        .hotel-opt li{
+            display: flex;
+            align-items: center;
+            justify-content: center;  
+            flex-grow: 1;
+            height: 100%;
+            margin: 0 20px;
+           
+        }
+        .hotelList > li{
+            width: 22.69rem;
+            height: 12.44rem;
+            line-height: 1.25rem;
+            text-align: center;
+            border: 0.06px solid rgba(187, 187, 187, 1);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <main>
+            <div class="modal home-modal">
+                <div class="hotel-name">
+                    <p>时空精品酒店</p>
+                </div>
+                <div class="content ">
+                    <div class="bg">
+                        <img src="img/masami2.jpg" alt="masami">
+                    </div>
+                    <div class="layout">
+                            <div class="hotel-env">
+                                    <i>I</i>
+                                    <p>停车场、WIFI、空调、24小时热水、豪华美食</p>
+                                </div>
+                                <ul class="hotel-opt">
+                                    <li>入住时间</li>
+                                    <li>退房时间</li>
+                                    <li>住一晚</li>
+                                </ul>
+                                <ul class="hotelList">
+                                    <li>
+                                        <div class="intro">
+                                            <img src="" alt="">
+                                            <p>豪华早餐</p>
+                                            <p>窗户，豪华早餐</p>
+                                            <p>￥399</p>
+                                            <button>预定</button>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <p>$价格</p>
+                                                <p>散客</p>
+                                            </li>
+                                            <li>
+                                                <p>$价格</p>
+                                                <p>中产阶级</p>
+                                            </li>
+                                            <li>
+                                                <p>$价格</p>
+                                                <p>土豪</p>
+                                            </li>
+                                            <li>
+                                                <p>$价格</p>
+                                                <p>大土豪</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    </main>
+    <footer>
+        <ul>
+
+            <li>
+                <i>@</i>
+                <p>预定</p>
+            </li>
+            <li>
+                <i>@</i>
+                <p>我的</p>
+            </li>
+        </ul>
+    </footer>
+    </div>
+</body>
+
+</html>

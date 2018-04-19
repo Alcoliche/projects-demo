@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<style>
+  
+</style>
+<body>
+  <div class="box">
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+</div>
+<input id="ipt" type="text"> <button id="btn">添加</button>
+<div id="wrap">
+  </div>
+<script>
+  $(".box li").on("click", function(){
+    console.log(1)
+    $("#wrap").text($(this).text())
+})
+  //等同于
+  //$(".box li").click(function(){
+  //  console.log(2)
+  //  var str = $(this)text()
+   // $("#wrap").text(str)
+ // })
+  $('.box li').on("click.hello0",function(){
+  console.log(3)
+  $("#wrap").text($(this).text())
+})
+  $(".box ul").on("click","li",function(){
+    $("#wrap").text($(this).text())
+  })
+  document.querySelector(".box ul").onclick = function(e){
+  if(e.target.tagName.toLowerCase() === 'li'){
+    $("#wrap").text($(this).text())
+  }
+}
+  $('#btn').on("click",function(){
+    var value = $('#ipt').val()
+    $('.box> ul').append("<li>"+value+"</li>")
+  })
+</script>
+</body>
+</html>

@@ -5,14 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: .88rem;
+        }
+        ul,li {
+            list-style: none;
+        }
+        .home-modal .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 2.81rem;
+            background-color: rgba(0, 0, 0, 1);
+            color: rgba(255, 255, 255, 1);
+            font-size: 1.13rem;
+            font-family: Microsoft Yahei;
+        }
+        .content {
+            
+        }
+        .content .bg{
+            width: 100%;
+            height: 11.56rem;
+        }
+        .content .bg img {
+            width: 100%;
+            height: 100%;
+        }
+        .content .hotel-env {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 96%;
+            height: 2.75rem;
+            margin: 0 auto;
+            margin-top: 0.5rem;
+            line-height: 1.25rem;
+            border: 0.06rem solid rgba(187, 187, 187, 1);
+        }
+        .content .hotel-env i {
+            margin-right: 1rem;
+        }
+        .hotel-opt {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 <body>
     <div class="modal home-modal">
-        <div class="title">时空精品酒店</div>
+        <div class="title"><p>时空精品酒店</p></div>
         <div class="content">
-            <div class="bg"><img src="" alt=""></div>
+            <div class="bg"><img src="img/masami2.jpg" alt="masami"></div>
             <div class="hotel-env">
-                <i></i>
+                <i>I</i>
                 <p>停车场、WIFI、空调、24小时热水、豪华美食</p>
             </div>
             <ul class="hotel-opt">
@@ -29,23 +83,45 @@
                         <p>￥399</p>
                         <button>预定</button>
                     </div>
+                    <ul>
+                        <li>
+                            <p>$价格</p>
+                            <p>散客</p>
+                        </li>
+                        <li>
+                            <p>$价格</p>
+                            <p>中产阶级</p>
+                        </li>
+                        <li>
+                            <p>$价格</p>
+                            <p>土豪</p>
+                        </li>
+                        <li>
+                            <p>$价格</p>
+                            <p>大土豪</p>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             </div>
         </div>
-        <div class="footer">
-            <div class="Reservation">
-                <i></i>
-                <p>预定</p>
-            </div>
-            <div class="user">
-                <i></i>
-                <p>我的</p>
-            </div>
-        </div>
+        
     </div>
     <div class="modal user-modal">
-
+        <div class="title">会员中心</div>
+        <div class="content">
+            
+        </div>
+    </div>
+    <div class="footer">
+        <div class="Reservation">
+            <i></i>
+            <p>预定</p>
+        </div>
+        <div class="user">
+            <i></i>
+            <p>我的</p>
+        </div>
     </div>
 </body>
 </html>

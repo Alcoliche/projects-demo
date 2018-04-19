@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+  <style>
+    .box{
+      position: relative;
+    }
+    .fang {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+      position: absolute;
+      top: 20;
+      left: 20;
+    }
+  </style>
+<body>
+    <button id="show">show</button>
+    <button id="hide">hide</button>
+    <button id="slideUp">slideUp</button>
+    <button id="slideDown">slideDown</button>
+    <button id="slideToggle">slideToggle</button>
+    <button id="fadeIn">fadeIn</button>
+    <button id="fadeOut">fadeOut</button>
+    <button id="fadeToggle">fadeToggle</button>
+    <button id="animate">animate</button>
+    <button class="auto">auto</button>
+    <button id="stop1">stop(false,false)</button>
+    <button id="stop2">stop(true,false)</button>
+    <button id="stop3">stop(true,true)</button>
+  <div class="box">
+     <div class="fang"></div>
+  </div>
+
+  <script>   
+    $("#show").click(function(){
+    $(".fang").show(300);    //show 显示元素
+  })
+  $("#hide").click(function(){
+    $(".fang").hide(300);    //hide隐藏元素
+  })
+  $("#slideUp").click(function(){
+    $(".fang").slideUp(300);  //上啦隐藏元素
+  })
+  $("#slideDown").click(function(){
+    $(".fang").slideDown(300);  //下拉展示元素
+  })
+  $("#slideToggle").click(function(){
+    $(".fang").slideToggle(300);    //下拉上啦切换
+  })
+  $("#fadeIn").click(function(){
+    $(".fang").fadeIn(300);      //淡入显示匹配元素
+  })
+  $("#fadeOut").click(function(){
+    $(".fang").fadeOut(300);    //渐出隐藏匹配元素
+   })
+  $("#fadeToggle").click(function(){
+    $(".fang").fadeToggle(300);    //淡入渐出切换
+   })
+   $("#animate").click(function(){
+      $('.fang').animate({        //自定义动画效果
+                opacity: 0.5,
+                left: '+=30',
+            },3000,function(){
+                console.log("动画结束！")
+            })
+   })  
+   $(".auto").click(function(){
+      $('.fang').animate({        //自定义动画队列
+                opacity: 0.8,
+                left: '+=200'
+            },1000).animate({
+              opacity: 0.6,
+              top: '+=200'
+            },1000).animate({
+              opacity: 0.8,
+              left: '-=200'    
+            },1000).animate({
+              opacity: 1,      
+              top: '-=200'
+            })
+   })  
+   $("#stop1").click(function(){
+     $(".fang").stop()  //停止当前动画
+    })
+   
+   $("#stop2").click(function(){
+     $(".fang").stop(true,false)  //停止当前动画，并清除未执行的动画队列
+    })
+   
+   $("#stop3").click(function(){
+     $(".fang").stop(true,true)  //停止当前动画，并清除未执行的动画队列，并且(当前动画!!!)展示最终状态
+    })
+  </script>
+  
+  
+ 
+</body>
+</html>

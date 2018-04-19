@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    body {
+
+        font-family: Arial, Helvetica, sans-serif;
+        color: #666;
+    }
+
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .layout {
+        width: 720px;
+        margin: 20px auto;
+    }
+
+    button {
+        color: #c81623;
+        padding: 10px 15px;
+        border: 1px solid #c81623;
+        border-radius: 3px;
+        background: #fff;
+        cursor: pointer;
+    }
+
+    .pro-ct>li {
+        position: relative;
+        float: left;
+        width: 220px;
+        padding: 10px 20px;
+        margin-left: 20px;
+        margin-top: 20px;
+        text-align: center;
+        border: 1px solid #eee;
+        background: #fff;
+    }
+
+    .prod img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.3);
+        transition: all .3s;
+        opacity: 0;
+    }
+
+    .cover button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .prod.hover .cover {
+        opacity: 1;
+    }
+
+    .pro-ct {
+        margin-left: -20px;
+        margin-top: -20px;
+    }
+
+    .prod-name {
+        height: 36px;
+        text-align: left;
+        font-weight: normal;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .prod-price {
+        text-align: left;
+        color: #c81623;
+    }
+
+    .layout>button {
+        margin-top: 20px;
+        margin-right: 20px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="layout">
+        <h1>珠宝首饰</h1>
+        <ul class="pro-ct clearfix">
+            <li class="prod">
+                <div class="cover">
+                    <button class="del">删除</button>
+                </div>
+                <img src="https://picsum.photos/200/200/?image=44" alt="">
+                <p class="prod-name">星尘</p>
+                <p class="prod-price">￥1699</p>
+            </li>
+            <li class="prod">
+                <div class="cover">
+                    <button class="del">删除</button>
+                </div>
+                <img src="https://picsum.photos/200/200/?image=33" alt="">
+                <p class="prod-name">温宁</p>
+                <p class="prod-price">￥1688</p>
+            </li>
+            <li class="prod">
+                <div class="cover">
+                    <button class="del">删除</button>
+                </div>
+                <img src="https://picsum.photos/200/200/?image=22" alt="">
+                <p class="prod-name">忘机</p>
+                <p class="prod-price">￥1699</p>
+            </li>
+            
+        </ul>
+        <button class="add">添加</button>
+        <button class="edit">操作</button>
+    </div>
+</body>
+<script>
+    function getProdHtml(prod) {
+        var html = "";
+        html += '<li class = "prod">'
+        html += '<div class="cover"><button class="del">删除</button></div>'
+        html += '<img src="' + prod.img + '" alt="">'
+        html += '<p class="prod-name">' + prod.name + '</p>'
+        html += '<p class="prod-price">' + prod.price + '</p>'
+        html += '</li>'
+        return html
+    }
+    function getData() {
+        var results = []
+        for (var i = 0; i < 3; i++) {
+            var rand = Math.floor(Math.random() * 100)
+            var product = {
+                img: 'https://picsum.photos/200/200/?image=' + rand,
+                name: '忘却心机',
+                price: "￥" + rand
+            }
+            results.push(product)
+        }
+
+        return results
+    }
+
+    $('.add').on("click", function (e) {
+        e.preventDefault();
+        $(".prod").removeClass("hover")
+        var products = getData()
+
+        $.each(products, function (index, prod) {
+            var html = getProdHtml(prod)
+            $(".pro-ct").append(html)
+        })
+    })
+
+    $(".edit").on("click", function () {
+        $(".prod").toggleClass("hover")
+    })
+
+    // $(".prod .del").click(function () {
+    //     $(this).parents(".prod").remove()
+    // })
+    $(".pro-ct").on("click",".del",function(e){ //使用事件代理，才能匹配后面js生成的html元素
+        $(this).parents('.prod').remove()
+    })
+    
+</script>
+
+</html>
