@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- 
+    懒加载,如何判断元素出现在页面之中？
+    元素到窗口的高度 >= 窗口滚动高度 + 窗口高度 
+ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.js"></script>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container img{
+            float: left;
+            width: 50%;
+            height: 300px;
+        }
+        h1 {
+            clear: both;
+        }
+    </style>    
+    <title>lazyLoading</title>
+</head>
+<body>
+    <div class="container">
+        <img  alt="1" data-src="img/magazine1.jpg">
+        <img  alt="2" data-src="img/magazine2.jpg">
+        <img  alt="3" data-src="img/magazine3.jpg">
+        <img src="img/$10.gif" alt="4" data-src="img/magazine4.jpg">
+        <img src="img/$10.gif" alt="5" data-src="img/magazine5.jpg">
+        <img src="img/$10.gif" alt="6" data-src="img/magazine6.jpg">
+        <img src="img/$10.gif" alt="7" data-src="img/magazine7.jpg">
+        <img src="img/$10.gif" alt="8" data-src="img/magazine8.jpg">
+        <img src="img/$10.gif" alt="9" data-src="img/magazine9.jpg">
+        <!-- <h1>haha</h1> -->
+        <img src="img/$10.gif" alt="10" data-src="img/magazine10.jpg">
+        <img src="img/$10.gif" alt="11" data-src="img/magazine11.jpg">
+        <img src="img/$10.gif" alt="12" data-src="img/magazine12.jpg">
+        <img src="img/$10.gif" alt="13" data-src="img/magazine13.jpg">
+        <img src="img/$10.gif" alt="14" data-src="img/magazine14.jpg">
+    </div>
+</body>
+    <script>
+        start()
+        var isLoad = false
+        $(window).scroll(function(){
+            if(isLoad){
+                return
+            }
+            isLoad = true
+            start()
+        })
+        function start(){
+            $(".container img").not('data-isLoaded').each(function(){
+                var $node =$(this)
+                if( isShow($node) ){
+                    // loadImg($node)
+                    // 延时测试
+                    setTimeout(function(){
+                        loadImg($node)
+                    },1000)
+                    // isLoad = false
+                }        
+            })
+        }
+        //元素到窗口的高度 =< 窗口滚动高度 + 窗口高度
+        function isShow($node){
+            return $node.offset().top <= $(window).scrollTop() + $(window).height() 
+        }
+        
+        function loadImg($img){
+            $img.attr('src',$img.attr('data-src'))
+            $img.attr("data-isLoaded", 1)
+        }
+    </script>
+</html>

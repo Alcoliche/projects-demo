@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.js"></script>
+    <title>waterfall</title>
+    <style>
+        .waterFall {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .waterFall img {
+            position: absolute;
+            width: 100px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="waterFall">
+        <img src="http://via.placeholder.com/100x100" alt="300*100">
+        <img src="http://via.placeholder.com/100x70" alt="300*100">
+        <img src="http://via.placeholder.com/100x250" alt="300*100">
+        <img src="http://via.placeholder.com/100x10" alt="300*100">
+        <img src="http://via.placeholder.com/100x300" alt="300*100">
+        <img src="http://via.placeholder.com/100x180" alt="300*100">
+        
+        <img src="http://via.placeholder.com/100x200" alt="300*100">
+        <img src="http://via.placeholder.com/100x80" alt="300*100">
+        <img src="http://via.placeholder.com/100x150" alt="300*100">
+        <img src="http://via.placeholder.com/100x80" alt="300*100">
+        
+        <img src="http://via.placeholder.com/100x100" alt="300*100">
+        <img src="http://via.placeholder.com/100x80" alt="300*100">
+        <img src="http://via.placeholder.com/100x150" alt="300*100">
+        <img src="http://via.placeholder.com/100x80" alt="300*100">
+        <img src="http://via.placeholder.com/100x100" alt="300*100">
+        <img src="http://via.placeholder.com/100x160" alt="300*100">
+        <img src="http://via.placeholder.com/100x180" alt="300*100">
+    </div>
+    <script>
+        var colCount 
+        var colHeightArray=[] 
+        var imgWidth = $(".waterFall img").outerWidth(true)
+        /* outerWidth(true) */
+        console.log(imgWidth)
+        colCount=Math.floor($(".waterFall").width()/$(".waterFall img").outerWidth(true))
+         console.log("colCount :"+ colCount)
+        for(var i=0;i<colCount;i++){
+            colHeightArray[i] = 0
+        }
+        //[0,0,0]
+        $(".waterFall img").load(function(){
+            var minValue = colHeightArray[0]
+            var minIndex = 0
+            for(var i=0 ; i<colCount;i++){
+                if(colHeightArray[i] < minValue){
+                    minValue = colHeightArray[i]
+                    minIndex = i
+                }
+            }
+            console.log("minIndex = "+minIndex)
+            console.log("imgWidth = "+imgWidth)
+            console.log("left = "+minIndex *imgWidth)
+            $(this).css({
+                left: minIndex * imgWidth,
+                top: minValue
+            })
+
+            colHeightArray[minIndex] += $(this).outerHeight(true)
+        })
+      
+    </script>
+</body>
+
+</html>
