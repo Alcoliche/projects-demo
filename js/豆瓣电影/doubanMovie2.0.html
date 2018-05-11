@@ -80,6 +80,33 @@
         color: #FF5722;
     }
 
+    /* 搜索css */
+    #search {
+        height: calc(100% - 45px);
+    }
+    section .search-area {
+        color: #333;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+    }
+    section .search-area input {
+        width: calc(100% - 50px);
+        padding: 8px;
+        background-color: #eee;
+        border: none;
+        border-radius: 2px;
+    }
+    section .search-area .button {
+        position: absolute;
+        right: 0;
+        padding: 8px 10px;
+        background-color: #FF5722;
+        color: #fff;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
     footer {
         position: absolute;
         bottom: 0;
@@ -128,7 +155,7 @@
 <body>
     <main>
         <section id="top250">
-            <div class="container">1
+            <div class="container">
                 <!-- <div class="item">
                 <a href="">
                     <div class="cover">
@@ -156,11 +183,11 @@
             </div>
         </section>
         <section id="search">
-                <div class="container">
-                </div>
-                    <div class="loading">
-                        <span class="iconfont icon-loading"></span>
-                    </div>
+            <div class="search-area">
+                <input type="text" placeholder="搜索电影"><span class="button">搜索</span>
+            </div>
+            <div class="container">
+            </div>
         </section>
 
     </main>
@@ -239,7 +266,7 @@
         bind: function(){
             var _this = this
             this.$box.scroll(function(){
-                if(!_this.isFinish && helper.isToEnd(_this.$box,_this.$content)){
+                if(!_this.isFinish && Helper.isToEnd(_this.$box,_this.$content)){
                     _this.start()
                 }
             })
@@ -258,7 +285,7 @@
                 $.ajax({
                     url: "http://api.douban.com/v2/movie/top250",
                     type: "GET",
-                    Data: {
+                    data: {
                         start: _this.index||0
                     },
                     dataType: "jsonp"
@@ -291,9 +318,80 @@
             this.$box = $("#usBox")
             this.start()
         },
+        start: function(){
+            var _this = this
+            this.getData(function(data){
+                _this.render(data)
+            })  
+        },
+        getData: function(callback){
+            var _this = this
+                $.ajax({
+                    url: "http://api.douban.com/v2/movie/us_box",
+                    dataType: "jsonp"
+                }).done(function (ret) {
+                    console.log(ret)
+                    _this.index += 20
+                    callback&&callback(ret)
+                }).fail(function () {
+                    console.log("error ...")
+                })            
+        },
+        render: function(data){
+            var _this = this
+            data.subjects.forEach(function(movie){
+            movie = movie.subject
+            var html =`<div class="item">
+                        <a href="">
+                            <div class="cover">
+                                <img src="" alt="">
+                            </div>
+                            <div class="detail">
+                                <h2>霸王别姬</h2>
+                                <div class="extra"><span class="score">9.3 </span>分<span class="collect">1000</span>收藏</div>
+                                <div class="extra"><span class="year"> 1997 </span> / <span class="type"> 动作、剧情</span></div>
+                                <div class="extra">导演 : <span class="director"> 李安</span></div>
+                                <div class="extra">主演 : <span class="actor"> 吴彦祖</span></div>
+                            </div>
+                        </a>
+                    </div>`
+            var $node = $(html)            
+            $node.find(".cover img").attr("src",movie.images.medium)
+            $node.find(".detail h2").text(movie.title)
+            $node.find(".detail .score").text(movie.rating.average)
+            $node.find(".detail .collect").text(movie.collect_count)
+            $node.find(".detail .year").text(movie.year)
+            $node.find(".detail .type").text(movie.genres.join('/'))
+            $node.find(".director").text(function(){
+                var directorArr = []
+                movie.directors.forEach(function(e){
+                    directorArr.push(e.name)       
+                })
+                return directorArr.join('、')
+            })
+            $node.find(".actor").text(function(){
+                var actorArr = []
+                movie.casts.forEach(function(e){
+                    actorArr.push(e.name)
+                })
+                return actorArr.join('、')
+            })
+
+                _this.$box.find(".container").append($node)
+            })
+        }    
+    }
+
+     var SearchPage = {
+        init: function(){
+            this.$box = $("#search")
+            this.keyword = ""
+            this.bind()
+        },
         bind: function(){
             var _this = this
-            this.$box.scroll(function(){
+            this.$box.find(".button").click(function(){
+                _this.keyword = _this.$box.find("input").val()
                 _this.start()
             })
         },
@@ -306,14 +404,11 @@
         },
         getData: function(callback){
             var _this = this
-            if(this.isLoading) return
-            _this.isLoading = true
             _this.$box.find(".loading").show()  
                 $.ajax({
-                    url: "http://api.douban.com/v2/movie/top250",
-                    type: "GET",
-                    Data: {
-                        start: _this.index||0
+                    url: "http://api.douban.com/v2/movie/search",
+                    data: {
+                        q: _this.keyword
                     },
                     dataType: "jsonp"
                 }).done(function (ret) {
@@ -371,22 +466,6 @@
 
                 _this.$box.find(".container").append($node)
             })
-        },
-        isToBottom: function(){
-            return this.$box.find(".container") <= 
-            this.$box.height() + this.$box.scrollTop() + 10
-        }      
-    }
-
-     var SearchPage = {
-        init: function(){
-
-        },
-        bind: function(){
-
-        },
-        start: function(){
-
         }
     }
 
