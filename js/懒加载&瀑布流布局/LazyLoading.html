@@ -58,12 +58,12 @@
             $(".container img").not('data-isLoaded').each(function(){
                 var $node =$(this)
                 if( isShow($node) ){
-                    // loadImg($node)
+                    loadImg($node)
                     // 延时测试
-                    setTimeout(function(){
-                        loadImg($node)
-                    },1000)
-                    // isLoad = false
+                    // setTimeout(function(){
+                    //     loadImg($node)
+                    // },1000)
+                    isLoad = false
                 }        
             })
         }
