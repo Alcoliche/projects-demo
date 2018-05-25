@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 插值 -->
+    <!-- 文本 v-once一次性插值，数值不变 -->
+    <span>Message:{{ msg }}</span>
+    <span v-once>这个不会改变：{{ msg }}</span>
+    <!-- 原始html v-html-->
+    <p> Using mustaches: {{ rawHtml }}</p>
+    <p> Using V-html directive: <span v-html="rawHtml"></span></p>
+    <!-- 特性 v-bind  -->
+    <div v-bind:id="dynamicId"></div>
+    <button v-bind:disabled="isButtonDisabled">    </button>
+    <!--js表达式 只能用单个表达式 -->
+    {{ number + 1}}
+    {{ ok? "Yes":"No" }}
+    {{ message.split("").reverser().join("") }}
+
+    <!-- 指令 -->
+    <!-- 接受一个参数，告知v-bind 指令将该速度的href特性与表达式ulr的值绑定 -->
+    <a v-bind:href="url">...</a>
+    <a v-on:click="doSomething">...</a>
+    <!-- 修饰符 .   .prevent 告诉v-on 对于触发的事件调用event.preventDefault() -->
+    <form v-on:submit.prevent="onSubmit">....</form>
+
+    <!-- 缩写    v-bind： => :     v-on=> @ -->
+    <a v-bind:href="url"></a>
+    <a :href="url"></a>
+    
+    <a v-on:href="url"></a>
+    <a @:href="url"></a>
+</body>
+</html>

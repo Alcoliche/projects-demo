@@ -1,0 +1,57 @@
+.layout {
+    margin: 0 auto;
+    width: 600px;
+}
+
+#page-cover {
+
+}
+.bg {
+    position: absolute;
+    z-index: -1;
+    left: -10px;
+    top: -10px;
+    bottom: -10px;
+    right: -10px;
+    background: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-big) center center no-repeat;
+    background-size: cover;
+    filter: blur(4px);
+}
+.bg::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,.4)
+}
+main {
+    height: calc(100% - 24vh);
+    padding-top: 12vh;
+}
+footer {
+    height: 24vh;
+}
+main {
+    display: flex;
+}
+.musicInfo {
+    flex-grow: 1;
+}
+main .aside {
+    width: 46vh;
+}
+main .aside > figure {
+    width: 46vh;
+    height: 46vh;
+    background-image: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-middle);
+    background-size: cover;
+}
+.action {
+    display: flex;
+    padding: 6vh;
+}
+.action > iconfont {
+    flex: 1;
+}
