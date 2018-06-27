@@ -1,143 +1,191 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    ul, li {
-        list-style: none;
-    }
-    .wrap {
-        width: 900px;
-        margin: 0 auto;
-    }
-    .clearfix {
-        content: "";
-        display: block;
-        clear: both;
-    }
-    #pic-ct {
-        position: relative;
-    }
-    #pic-ct .item {
-        position: absolute;
-        padding: 0 0 10px 0;
-        margin: 10px;
-        border: 1px solid #DFDFDF;
-        opacity: 0;
-        transition: all .8s;
-    }
-    #pic-ct .item img {
-        margin: 10px;
-        width: 260px;
-    }
-    #pic-ct .item .header {
-        height: 25px;
-        margin: 0 12px;
-        border-bottom: 1px solid #DBDBDB;
-    }
-    #pic-ct .desp {
-        font-size: 12px;
-        line-height: 1.8;
-        margin: 10px 15px 0;
-        color: #777371;
-    }
-    #load {
-        visibility: hidden;
-        height: 20px;
-    }
-    .hide {
-        display: none;
-    }
-</style>
-<body>
-    <div class="wrap">
-        <div class="waterfall">
-            <ul id="pic-ct" class="ct clearfix">
-                <li class="item">
-                    <a href="#"><img src="" alt=""></a>
-                    <h4 class="header">标题</h4>
-                    <p class="desp">当地时间2016年3月1日，在东部与亲俄武装作战中受伤的乌克兰士兵接受海豚治疗。</p>
-                </li>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+            ul, li {
+                list-style: none;
+            }
+            .container {
+                max-width: 920px;
+                margin: 0 auto;
+                
+            }
+
+            .clearfix::after {
+                content: "";
+                display: block;
+                
+                clear: both;
+            }
+            .picture {
+                position: relative;
+                
+                border: 1px solid gray;
+            }
+            .picture > .item {
+                position: absolute;
+                margin: 10px;
+                width: 280px;
+                padding-right: 10px;
+                border: 1px solid #dfdfdf;
+                background: #fff;
+                opacity: 0;
+                transform: all .6s;
+            }
+            
+            .item img {
+                width: 260px;
+                margin: 10px;
+            }
+            .item  .title {
+                height: 25px;
+                margin: 0 12px;
+                border-bottom: 1px solid #dbdbdb;
+            }
+            .item .intro {
+                font-size: 12px;
+                line-height: 1.8;
+                margin: 10px 15px 0;
+                color: #777371;
+            }
+            /* #load {
+                visibility: hidden;
+            } */
+        </style>
+    </head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+
+    <body>
+        <div class="container">
+            <ul class="clearfix picture" style="height: 1000px">
+                <!-- <li class="item">
+                    <a href="#">
+                        <img src="" alt="">
+                    </a>
+                    <h3 class="title">标题</h3>
+                    <p class="intro">xxxxxxxxxxxxxxbalabala</p>
+                </li> -->
                 
             </ul>
-            <div class="load">圈圈</div>
+            <div id="load">can you see me?</div>
         </div>
-    </div>
-</body>
-<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-//1. ajax请求数据
-//2. 数据渲染dom
-//3. 瀑布流布局摆放
-//4. 页面滚动到底部，重复123
 
-var curPage = 1
-var perPageCount = 10
-//初始化瀑布流数据
-var colSumHeight = []
-var nodeWidth = $(".item").outerWidth(true)
-var colNum = parseInt($("#pic-ct").width()/nodeWidth)
-for(let i=0;i < colNum.length; i++){
-    colSumHeight = 0
-}
-
-var isData
-//ajax请求
-function getData(callback){
-    $.ajax({
-        url: "http://platform.sina.com.cn/slide/album_tech",
-        dataType: "jsonp",
-        data: {
-            app_key: '1271687855',
-            num: perPageCount,
-            page: curPage
+    </body>
+    <script>
+        var isFirst = true
+        var $target = $("#load"),
+            isDataLoaded = true,
+            perPageCount = 10,
+            curPage = 1
+        var colHeight = [];
+        
+        start()
+    $(window).scroll(()=>{
+        if(!isDataLoaded) return
+        if(isShow($target)){
+            start()
         }
-    }).done(function(ret){
-        if(ret && ret.status && ret.status.code === "0"){
-            callback(ret.data);
-        }else{
-            console.log("get error data");
-        }
+        
     })
-}
-//渲染dom
-function getNode(item){
-    var tpl = ''
-        tpl = '<li class="item">'
-        tpl = '<a href="'+ item.url+'"><img src="'+ item.img_url +'" alt=""></a>'
-        tpl = '<h4 class="header">'+ item.short_name +'</h4>'
-        tpl = '<p class="'+item.short_intro+'"></p>'
-        tpl = '</li>'
-    var $tpl =$(tpl)
-    return $tpl
-}
+        function start(){
+            getData(function(newList){
+                console.log(newList)
+                isDataLoaded = true
+                $.each(newList,function(index,news){
+                    var $node = getNode(news)
+                    $node.find("img").load(()=>{
+                        $(".picture").append($node)
+                        console.log($node,"loaded..")
+                        waterfall($node)
+                    })
 
-//瀑布流布局
-function waterFallPlace($node){
-    var index = 0,
-        minSumHeight = colSumHeight[0];
-    for(var i=0;i<colSumHeight.length; i++){
-        if(colSumHeight[i] < minSumHeight[i]){
-            index = i;
-            minSumHeight = colSumHeight[i];
+                })
+            })
+            isDataLoaded = false
         }
-    }
-    $node.css({
-        left: nodeWidth *index,
-        top: minSumHeight,
-        opacity: 1
-    });
-    colSumHeight[index] = $node.outerHeight(true) + colSumHeight[index];
-    $("#pic-ct").height(Math.floor)
-}
-</script>
-</html>
+        function isShow($node){
+            var $nodeHeight =$node.offset().top;
+            var $windowScrollHeight =$(window).scrollTop();
+            var $windowHeight =$(window).height();
+            return $nodeHeight <= $windowScrollHeight+$windowHeight
+        }
+        function getData(callback){
+            $.ajax({
+                url:"https://platform.sina.com.cn/slide/album_tech",
+                dataType:"jsonp",
+                jsonp:"jsoncallback",
+                data:{
+                    app_key: '1271687855',
+                    num: perPageCount,
+                    page: curPage
+                }
+            }).done(function(ret){
+                console.log(ret)
+                if(ret.status && ret.status.code === "0"){
+                    callback(ret.data)
+                    curPage++
+                }else{
+                    console.log("get error")
+                }
+            })
+        }
+        function getNode(item){
+            var tpl =
+                    '<li class="item">'+
+                        '<a href="'+item.url+'">'+
+                        '<img src="'+item.img_url+'" alt="">'+
+                        '</a>'+
+                        '<h3 class="title">'+item.short_name+'</h3>'+
+                        '<p class="intro">'+item.short_intro+'</p>'+
+                    '</li>'   
+            return $(tpl)
+        }
+        function waterfall($node){
+            var nodeWidth = $(".item").outerWidth(true);
+            if(isFirst){
+                
+                var colNum = parseInt($(".container").width()/$(".item").outerWidth(true))
+                for(var i=0;i<colNum;i++){
+                    colHeight[i]= 0
+                }
+                isFirst = false
+            }
+            var index = 0,
+                minSumHeight = colHeight[0];
+                
+            for(var i=0;i<colHeight.length;i++){
+                if(colHeight[i]<minSumHeight){
+                    index = i;
+                    minSumHeight = colHeight[i];
+                }
+            }
+            
+            // console.log(index)
+            // console.log(nodeWidth)
+            $node.css({
+                left: nodeWidth*index,
+                top: minSumHeight,
+                opacity:1
+            });
+
+            colHeight[index] = $node.outerHeight(true) + colHeight[index]
+            console.log(Math.max.apply(null,colHeight))
+            console.log($(".picture"))
+            $(".picture").height(Math.max.apply(null,colHeight))
+            
+
+        }
+    
+    </script>
+
+    </html>
