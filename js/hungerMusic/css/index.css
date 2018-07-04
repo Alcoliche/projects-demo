@@ -1,22 +1,28 @@
+html,body,#page-music {
+    height: 100%;
+} 
 .layout {
     margin: 0 auto;
-    width: 600px;
+    width: 900px;
 }
-
-#page-cover {
-
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
 }
+/* 背景 */
 .bg {
     position: absolute;
     z-index: -1;
-    left: -10px;
-    top: -10px;
-    bottom: -10px;
-    right: -10px;
+    left: -5px;
+    top: -5px;
+    bottom: 0px;
+    right: 0px;
     background: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-big) center center no-repeat;
     background-size: cover;
-    filter: blur(4px);
+    filter: blur(3px);/* 模糊度 */
 }
+/* 遮罩层变暗 */
 .bg::before {
     content: "";
     position: absolute;
@@ -24,11 +30,12 @@
     top: 0;
     bottom: 0;
     right: 0;
-    background: rgba(0,0,0,.4)
+    background: rgba(0,0,0,.3)
 }
 main {
     height: calc(100% - 24vh);
     padding-top: 12vh;
+    
 }
 footer {
     height: 24vh;
@@ -39,8 +46,10 @@ main {
 .musicInfo {
     flex-grow: 1;
 }
+/* 左边样式 */
 main .aside {
     width: 46vh;
+    margin-right: 10vh;
 }
 main .aside > figure {
     width: 46vh;
@@ -48,10 +57,133 @@ main .aside > figure {
     background-image: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-middle);
     background-size: cover;
 }
-.action {
+.actions {
     display: flex;
-    padding: 6vh;
+    text-align: center;
+    color: #89877c;
+    margin-top: 5vh;
 }
-.action > iconfont {
+.actions > .iconfont {
     flex: 1;
+    font-size: 6vh;
+    transition: color .9s;
+    cursor: pointer;
+}
+.actions > .iconfont:hover {
+    color: white;
+}
+/* 右边 */
+main .musicInfo {
+    font-size: 2vh;
+    color: white;
+}
+.musicInfo .tag {
+    background:#2e6eec;
+    padding: 1.4vh 1.8vh;
+    border-radius: .3vh;
+}
+.musicInfo h2 {
+    margin-top: 5vh;
+    font-size: 6vh;
+}
+.musicInfo .icons {
+    margin-top: 10vh;
+    display: flex;
+    
+}
+.musicInfo .iconfont {
+    font-size: 3vh;
+    flex: 1;   
+}
+.musicInfo .timeBar {
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;    
+}
+.timeBar .bar {
+    flex: 1;
+    height: 1vh;
+    border-radius: .5vh;
+    background: #89877c; 
+}
+.timeBar .currentTime {
+    width: 4vh;
+    margin-left: 2vh;
+}
+.timeBar .bar {
+    position: relative;
+}
+.timeBar .progressBar {
+    position: absolute;
+    background: white;
+    height: 1vh;
+    border-radius: .5vh;
+    width: 10%;
+}
+.musicInfo .author {
+    margin-top: 5vh;
+    color: #89877c;
+}
+
+/* footer css */
+footer {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px -0.25vh 0.25vh 0.25vh rgba(255,255,255,0.2);
+    font-size: 2vh;
+    text-align: center;
+}
+
+footer .layout {
+    position: relative;
+    height: 22vh;
+    /* border: 1px solid black; */
+}
+footer .iconfont {
+    position: absolute;
+    top: 5vh;
+    font-size: 10vh;
+    color: #89877c;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+footer .iconfont:hover {
+    opacity: 1;
+    color: white;
+}
+footer .icon-left {
+    left: -20vh;
+}
+footer .icon-right {
+    right: -20vh;
+}
+footer .box {
+    position: relative;
+    overflow: hidden;
+}
+footer ul {
+    position: absolute;
+    left: 0;
+}
+footer li {
+    float: left;
+    margin: 2vh 2vh 2vh 2vh;
+    border-radius: .1vh;
+
+}
+
+footer li:hover {
+    box-shadow: 0 0 0.5vh 0.5vh rgba(255,255,255,0.8);
+}
+footer li figure {
+    height: 16vh;
+    width: 16vh;
+    background: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-small) no-repeat center center;
+    background-position: center;
+
+}
+footer p {
+    color: rgba(255,255,255,0.6);
+    margin-top: 1vh;    
 }

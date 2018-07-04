@@ -4,31 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/common.css">
+    <meta name="referrer" content= "never">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <title>music</title>
 </head>
+
 <body>
-    <section id="page-music" class="layout">
-        <main>
+    <section id="page-music">
+        <main class="layout">
             <div class="aside">
                 <figure></figure>
-                <div class="action">
-                    <span class="iconfont">like</span>
-                    <span class="iconfont">stop</span>
-                    <span class="iconfont">next</span>
+                <div class="actions">
+                    <span class="iconfont icon-collect" title="收藏"></span>
+                    <span class="iconfont icon-stop" title="播放"></span>
+                    <span class="iconfont icon-next"title="下一首"></span>
                 </div>
             </div>
-            <div class="muiscInfo">
-                <div class="musicTag">musicTag</div>
-                <div class="muisicName">musicName</div>
-                <div class="userInfo">
-                    <span>listenNum</span>
-                    <span>collectNum</span>
-                    <span>likeNum</span>
+            <div class="musicInfo">
+                <span class="tag">headplus</span>
+                <h2>Enjoy the music</h2>
+                <div class="icons">
+                    <span class="iconfont icon-listen">333</span>
+                    <span class="iconfont icon-collect">222</span>
+                    <span class="iconfont icon-like">111</span>
                 </div>
                 <div class="timeBar">
-                    <div class="totalTime">
+                    <div class="bar">
                         <div class="progressBar"></div>
                     </div>
                     <div class="currentTime">0:00</div>
@@ -38,18 +42,45 @@
             </div>
         </main>
         <footer>
-            <span class="iconfont"></span>
-            <span class="iconfont"></span>
-            <ul class="box">
-                <li>
-                    <div class="cover"></div>
-                    <h3>myFavourite</h3>
-                </li>
-            </ul>
+            <div class="layout">
+                <span class="iconfont icon-left"></span>
+                <span class="iconfont icon-right"></span>
+                <div class="box layout">
+                    <ul class="clearfix">
+                        <li>
+                            <a href="">
+                                <figure></figure>
+                                <p>myFavourite</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <figure></figure>
+                                <p>myFavourite</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <figure></figure>
+                                <p>myFavourite</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <figure></figure>
+                                <p>myFavourite</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </footer>
     </section>
     <section id="page-cover">
-        <div class="bg"></div>
     </section>
+    <div class="bg"></div>
+
+    <script src="js/index.js"></script>
 </body>
+
 </html>
