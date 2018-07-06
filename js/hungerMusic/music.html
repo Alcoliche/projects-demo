@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="referrer" content= "never">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
@@ -18,9 +19,9 @@
             <div class="aside">
                 <figure></figure>
                 <div class="actions">
-                    <span class="iconfont icon-collect" title="收藏"></span>
-                    <span class="iconfont icon-stop" title="播放"></span>
-                    <span class="iconfont icon-next"title="下一首"></span>
+                    <span class="btn-collect iconfont icon-collect" title="收藏"></span>
+                    <span class="btn-play iconfont icon-play" ></span>
+                    <span class="btn-next iconfont icon-next"></span>
                 </div>
             </div>
             <div class="musicInfo">
@@ -47,7 +48,7 @@
                 <span class="iconfont icon-right"></span>
                 <div class="box layout">
                     <ul class="clearfix">
-                        <li>
+                        <!-- <li>
                             <a href="">
                                 <figure></figure>
                                 <p>myFavourite</p>
@@ -70,7 +71,7 @@
                                 <figure></figure>
                                 <p>myFavourite</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
