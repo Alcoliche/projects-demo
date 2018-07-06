@@ -184,7 +184,7 @@ var Fm = {
             "//jirenguapi.applinzi.com/fm/getLyric.php",
             {sid: sid}
         ).done(function(ret){
-            console.log(ret.lyric)
+            //console.log(ret.lyric)
             var lyricObj = {}
             ret.lyric.split("\n").forEach(function(line){
                 var timeArr = line.match(/\d{2}:\d{2}/g)
@@ -197,11 +197,11 @@ var Fm = {
             _this.lyricObj = lyricObj
         })
         
-        lyric.split("\n")
+        
     },
     setMusic(song){
         var _this = this
-        console.log(song)
+        //console.log(song)
         this.currentSong = song
         this.audio.src = song.url
         this.audio.play()
