@@ -134,7 +134,10 @@ main .musicInfo {
     color: white;
     font-size: 3vh;
 }
-
+.musicInfo .lyric {
+    margin-top: 3vh;
+    font-size: 3vh;
+}
 /* footer css */
 footer {
     background: rgba(255, 255, 255, 0.2);
