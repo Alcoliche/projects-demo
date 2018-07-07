@@ -138,7 +138,6 @@ var Fm = {
                 _this.audio.pause();
                 _this.$play.removeClass("icon-stop").addClass("icon-play")
             }else{
-                
                 _this.audio.play();
                 _this.$play.removeClass("icon-play").addClass("icon-stop")
             }
