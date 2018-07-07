@@ -226,9 +226,34 @@ var Fm = {
         
         var line = this.lyricObj["0"+min+":"+second]
         if(line){
-            this.$container.find(".lyric").text(line)
+            this.$container.find(".lyric").text(line).boomText()
         }
     }
 }
+// - 将歌词字符串拆分，每个字符串加上span标签，重新拼接成html
+// - 延时每个span添加css3animate类+ 类型
+// 音乐jq插件
+$.fn.boomText = function(type){
+    type = type || 'rollIn'
+    console.log(type)
+    this.html(function(){
+      var arr = $(this).text()
+      .split('').map(function(word){
+          return '<span style="opacity: 0;display: inline-block">'+ word + '</span>'
+      })
+      return arr.join('')
+    })
+    
+    var index = 0
+    var $boomTexts = $(this).find('span')
+    var clock = setInterval(function(){
+      $boomTexts.eq(index).addClass('animated ' + type)
+      index++
+      if(index >= $boomTexts.length){
+        clearInterval(clock)
+      }
+    }, 300)
+  }
+
 Footer.init();
 Fm.init();
