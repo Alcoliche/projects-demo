@@ -98,7 +98,7 @@ var Footer = {
         this.setStyle()
     },
     setStyle(){
-        console.log('setstyle ..')
+        //console.log('setstyle ..')
         var count = this.$footer.find("li").length
         var width =  this.$footer.find("li").outerWidth(true)
         this.$ul.css({
@@ -129,7 +129,7 @@ var Fm = {
             //console.log(" fire i am here")
             _this.channelId = channelObj.channelId
             _this.channelName = channelObj.channelName
-            console.log(_this.channelName,_this.channelId)
+            //console.log(_this.channelName,_this.channelId)
             _this.loadMusic(_this.channelId)
         })
 
@@ -138,14 +138,14 @@ var Fm = {
                 _this.audio.pause();
                 _this.$play.removeClass("icon-stop").addClass("icon-play")
             }else{
-                console.log("sss")
+                
                 _this.audio.play();
                 _this.$play.removeClass("icon-play").addClass("icon-stop")
             }
         })
 
         this.$next.on("click",function(){
-            console.log("next....")
+            //console.log("next....")
             _this.loadMusic(_this.channelId)
         })
 
@@ -154,7 +154,7 @@ var Fm = {
         })
 
         this.audio.addEventListener('play', function(){
-            console.log('playing')
+            //console.log('playing')
             _this.clock = setInterval(function() {
                 _this.updateStatus()
               }, 1000)
@@ -162,7 +162,7 @@ var Fm = {
           })
 
         this.audio.addEventListener('ended', function(){
-            console.log('ended')
+            //console.log('ended')
             _this.loadMusic(_this.channelId)
           })
         //监听按钮 暂停/播放 下一曲loadmusic() ,setMusic()
@@ -235,7 +235,7 @@ var Fm = {
 // 音乐jq插件
 $.fn.boomText = function(type){
     type = type || 'rollIn'
-    console.log(type)
+    //console.log(type)
     this.html(function(){
       var arr = $(this).text()
       .split('').map(function(word){
