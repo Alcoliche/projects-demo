@@ -1,7 +1,7 @@
 # 豆瓣电影榜单移动端
 基于豆瓣提供的公共API实现的移动端页面。
 
-[查看效果](https://wheadplus.github.io/projects-demo/js/douban/index.html)
+# [查看效果](https://wheadplus.github.io/projects-demo/js/douban/index.html)
 
 # 功能
 - 电影榜单Top250展示
