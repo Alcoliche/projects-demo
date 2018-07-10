@@ -1,5 +1,6 @@
 # 项目 PC端FM电台
 本项目实现了一个在线的FM电台，用户能用户能够根据自己的喜欢选择相应的频道享受音乐。
+[实现效果](https://wheadplus.github.io/projects-demo/js/headMusic-pc/music.html)
 # 主要功能
 - 暂停/播放 下一首
 - 歌词滚动展示
