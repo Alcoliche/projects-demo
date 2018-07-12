@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carousel</title>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    ul,li {
+        list-style: none;
+    }
+    .carousel {
+        width: 400px;
+        height: 280px;
+        margin: 0 auto;
+        margin-top: 30px;
+        position: relative;
+        overflow: hidden;
+    }
+    .imgBox {
+        position: absolute;
+        width: 1600px;
+        overflow: hidden;
+    }
+    .imgBox::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .imgBox > li {
+        float: left;
+    }
+    .carousel img {
+        width: 400px;
+        height: 280px;
+    }
+    .carousel .bullets {
+        position: absolute;
+        top: 250px;
+        width: 100%;
+        text-align: center;
+        
+        /* z-index: 1; */
+        
+    }
+    .bullets > li {
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border: 1px solid rgba(0,0,0,.4);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .bullets > li.active {
+        width: 30px;
+        background-color: white;
+    }
+    .carousel .arrow {
+        position: absolute;
+        top: 40%;
+        padding: 5px;
+        background-color: rgba(0,0,0,.4);
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+    }
+    .carousel .left-btn {
+        left: 0;
+        padding-right: 18px;
+        border-bottom-right-radius:5px; 
+        border-top-right-radius: 5px;
+    }
+    .carousel .right-btn {
+        right: 0;
+        padding-left: 18px;
+        border-bottom-left-radius:5px; 
+        border-top-left-radius: 5px;
+    }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <ul class="imgBox">
+            <li><a href=""><img src="img/img1.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/img2.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/img3.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/img4.jpg" alt=""></a></li>
+        </ul>
+        <ul class="bullets">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span class="arrow left-btn"><</span>
+        <span class="arrow right-btn">></span>
+    </div>
+    
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/index.js"></script>
+<script>
+//     function Carousel($ct){
+//         this.init($ct)
+//         this.bind()
+//     }
+//     Carousel.prototype = {
+//         constructor : Carousel,
+//         init : function($ct){
+//             this.$ct = $($ct)
+//             this.$imgBox = this.$ct.find(".imgBox")
+//             this.$img = this.$ct.find(".imgBox li")
+//             this.$bullets = this.$ct.find(".bullets li")
+//             this.$left = this.$ct.find(".left-btn")
+//             this.$right = this.$ct.find(".right-btn")
+//         },
+//         bind : function(){
+//             this.$right.on("click",()=>{
+//                 console.log("right..")
+//             })
+//             this.$left.on("click",()=>{
+//                 console.log("left..")
+//             })
+//             this.$bullets.on("click",()=>{
+//                 console.log("bullet..")
+//             })
+//         },
+//         render(){
+
+//         },
+//     }
+//   var a =  new Carousel()
+</script>
+</html>
