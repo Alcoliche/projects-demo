@@ -21,6 +21,7 @@
         margin-top: 30px;
         position: relative;
         overflow: hidden;
+        border-radius: 5px;
     }
     .imgBox {
         position: absolute;
@@ -68,6 +69,8 @@
         font-size: 40px;
         color: white;
         cursor: pointer;
+        opacity: 0;
+        transition: opacity .3s;    
     }
     .carousel .left-btn {
         left: 0;
@@ -84,7 +87,7 @@
     </style>
 </head>
 <body>
-    <div class="carousel">
+    <div class="carousel c1">
         <ul class="imgBox">
             <li><a href=""><img src="img/img1.jpg" alt=""></a></li>
             <li><a href=""><img src="img/img2.jpg" alt=""></a></li>
@@ -100,40 +103,24 @@
         <span class="arrow left-btn"><</span>
         <span class="arrow right-btn">></span>
     </div>
-    
+    <div class="carousel c2">
+        <ul class="imgBox">
+            <li><a href=""><img src="img/img1.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/img2.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/img3.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/img4.jpg" alt=""></a></li>
+        </ul>
+        <ul class="bullets">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span class="arrow left-btn"><</span>
+        <span class="arrow right-btn">></span>
+    </div>
 </body>
 <script src="js/jquery.js"></script>
 <script src="js/index.js"></script>
-<script>
-//     function Carousel($ct){
-//         this.init($ct)
-//         this.bind()
-//     }
-//     Carousel.prototype = {
-//         constructor : Carousel,
-//         init : function($ct){
-//             this.$ct = $($ct)
-//             this.$imgBox = this.$ct.find(".imgBox")
-//             this.$img = this.$ct.find(".imgBox li")
-//             this.$bullets = this.$ct.find(".bullets li")
-//             this.$left = this.$ct.find(".left-btn")
-//             this.$right = this.$ct.find(".right-btn")
-//         },
-//         bind : function(){
-//             this.$right.on("click",()=>{
-//                 console.log("right..")
-//             })
-//             this.$left.on("click",()=>{
-//                 console.log("left..")
-//             })
-//             this.$bullets.on("click",()=>{
-//                 console.log("bullet..")
-//             })
-//         },
-//         render(){
 
-//         },
-//     }
-//   var a =  new Carousel()
-</script>
 </html>
